@@ -82,6 +82,10 @@ plotly.offline.init_notebook_mode(connected=True)
 # use offline mode to avoid initial registration
 ```
 
+
+<script>requirejs.config({paths: { 'plotly': ['https://cdn.plot.ly/plotly-latest.min']},});if(!window.Plotly) {{require(['plotly'],function(plotly) {window.Plotly=plotly;});}}</script>
+
+
 We bring in the `plotly` library by using the keyword `import` followed by our library name, `plotly`.  We create a new dictionary in python with the `dict` constructor.  Then we pass through **named arguments** to the constructor to create a dictionary with an $x$ key that points to a list of $x$ values.  Similarly, we create a $y$ key with a value of a list of $y$ values. Note that the $x$ values match avenue numbers and the $y$ values match the block numbers.  We display this data by assigning our dictionary to the variable of `trace0`, and passing it through as an argument to the `plotly.offline.iplot` method.  
 
 
@@ -90,7 +94,7 @@ import plotly
 plotly.offline.init_notebook_mode(connected=True)
 # we repeat these first lines just to keep the code together  
 
-trace0 = dict(x=[4, 1, 5, 6, 3, 2], y=[8, 11, 8, 13, 6, 4])
+trace0 = dict(x=[4, 1, 5, 6, 3, 5], y=[8, 11, 8, 13, 6, 4])
 
 # All that, and it doesn't even look good :(
 plotly.offline.iplot([trace0])
@@ -101,7 +105,7 @@ plotly.offline.iplot([trace0])
 
 
 
-<div id="7ced2553-80d5-423b-8431-769638f32d3f" style="height: 525px; width: 100%;" class="plotly-graph-div"></div><script type="text/javascript">require(["plotly"], function(Plotly) { window.PLOTLYENV=window.PLOTLYENV || {};window.PLOTLYENV.BASE_URL="https://plot.ly";Plotly.newPlot("7ced2553-80d5-423b-8431-769638f32d3f", [{"x": [4, 1, 5, 6, 3, 2], "y": [8, 11, 8, 13, 6, 4]}], {}, {"showLink": true, "linkText": "Export to plot.ly"})});</script>
+<div id="e5e0682e-eca9-48c7-bda1-8f82539bf93a" style="height: 525px; width: 100%;" class="plotly-graph-div"></div><script type="text/javascript">require(["plotly"], function(Plotly) { window.PLOTLYENV=window.PLOTLYENV || {};window.PLOTLYENV.BASE_URL="https://plot.ly";Plotly.newPlot("e5e0682e-eca9-48c7-bda1-8f82539bf93a", [{"x": [4, 1, 5, 6, 3, 5], "y": [8, 11, 8, 13, 6, 4], "type": "scatter", "uid": "3b56c274-ce7d-11e9-89e0-3af9d3ad3e0b"}], {}, {"showLink": true, "linkText": "Export to plot.ly"})});</script>
 
 
 The points were plotted correctly, but they are connected by a line, which doesn't represent anything in particular.
@@ -110,7 +114,7 @@ The lines are getting in the way.  Let's remove all of the connecting lines by s
 
 
 ```python
-trace1 = dict(x=[4, 1, 5, 6, 3, 2],
+trace1 = dict(x=[4, 1, 5, 6, 3, 5],
               y=[8, 11, 8, 13, 6, 4], 
               mode="markers", 
               text=["bob", "suzie", "fred", "edgar", "steven", "natalie"],)
@@ -122,7 +126,7 @@ plotly.offline.iplot([trace1])
 ```
 
 
-<div id="89a3bef8-0617-4e87-a9e4-df420522fd1f" style="height: 525px; width: 100%;" class="plotly-graph-div"></div><script type="text/javascript">require(["plotly"], function(Plotly) { window.PLOTLYENV=window.PLOTLYENV || {};window.PLOTLYENV.BASE_URL="https://plot.ly";Plotly.newPlot("89a3bef8-0617-4e87-a9e4-df420522fd1f", [{"x": [4, 1, 5, 6, 3, 2], "y": [8, 11, 8, 13, 6, 4], "mode": "markers", "text": ["bob", "suzie", "fred", "edgar", "steven", "natalie"]}], {}, {"showLink": true, "linkText": "Export to plot.ly"})});</script>
+<div id="6a981c3a-e46a-4e15-abc4-a6e4ab56a0ca" style="height: 525px; width: 100%;" class="plotly-graph-div"></div><script type="text/javascript">require(["plotly"], function(Plotly) { window.PLOTLYENV=window.PLOTLYENV || {};window.PLOTLYENV.BASE_URL="https://plot.ly";Plotly.newPlot("6a981c3a-e46a-4e15-abc4-a6e4ab56a0ca", [{"mode": "markers", "text": ["bob", "suzie", "fred", "edgar", "steven", "natalie"], "x": [4, 1, 5, 6, 3, 5], "y": [8, 11, 8, 13, 6, 4], "type": "scatter", "uid": "440b3788-ce7d-11e9-b408-3af9d3ad3e0b"}], {}, {"showLink": true, "linkText": "Export to plot.ly"})});</script>
 
 
 Ok, so if you move your mouse over the dots, you can see the names that correspond to each point.  Also, when we hover over the dot at the x axis of point four, we can see that is Bob's point, just like it should be.  Now, who is closest to Bob?  It looks like Fred is closest since he's only one avenue away. Fred seems to be the easiest delivery for Bob.
